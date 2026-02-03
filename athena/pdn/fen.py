@@ -8,11 +8,11 @@ class Fen:
         self._pieces: dict[int, BoardSquare] = {}
 
     def _parse_pieces(self, fen: str):
-        piece: BoardSquare = BoardSquare.empty
+        piece: BoardSquare = BoardSquare.EMPTY
         if fen[0].upper() == "W":
-            piece = BoardSquare.white_piece
+            piece = BoardSquare.WHITE_PIECE
         elif fen[0].upper() == "B":
-            piece = BoardSquare.black_piece
+            piece = BoardSquare.BLACK_PIECE
         fen = fen.replace(fen[0], "")
         last_char = fen[-1]
         if last_char == ".":

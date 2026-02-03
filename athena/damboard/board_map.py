@@ -13,11 +13,11 @@ class BoardMap:
     В дальнейшем это может быть изменено.
     """
 
-    def __init__(self, size: BoardSize = BoardSize.standard):
+    def __init__(self, size: BoardSize = BoardSize.STANDARD):
         self.__height = size.height + 2
         self.__width = size.width + 2
         self.__board_map: list[BoardSquare] = [
-            BoardSquare.out_of_bounds for _ in range(self.__height * self.__width)
+            BoardSquare.OUT_OF_BOUNDS for _ in range(self.__height * self.__width)
         ]
         self.__fill_board_map()
 
@@ -29,7 +29,7 @@ class BoardMap:
         for col in range(1, self.width - 1):
             if (col + row_ndx) % 2 != 0:
                 ndx = self.__width * row_ndx + col
-                self.__board_map[ndx] = BoardSquare.empty
+                self.__board_map[ndx] = BoardSquare.EMPTY
 
     def __getitem__(self, key: int) -> BoardSquare:
         return self.__board_map[key]
@@ -41,12 +41,11 @@ class BoardMap:
         self.__board_map[square] = piece
 
     def remove_piece(self, square: int) -> None:
-        self.__board_map[square] = BoardSquare.empty
+        self.__board_map[square] = BoardSquare.EMPTY
 
     def move_piece(self, from_square: int, to_square: int) -> None:
         self.__board_map[to_square] = self.__board_map[from_square]
-        self.__board_map[from_square] = BoardSquare.empty
-
+        self.__board_map[from_square] = BoardSquare.EMPTY
     @property
     def height(self):
         return self.__height

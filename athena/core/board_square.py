@@ -4,19 +4,19 @@ from athena.core.player import Player
 
 
 class BoardSquare(Enum):
-    empty = 0
-    white_piece = 1
-    white_king = 2
-    black_piece = 3
-    black_king = 4
-    taken = 5
-    out_of_bounds = 6
+    EMPTY = 0
+    WHITE_PIECE = 1
+    WHITE_KING = 2
+    BLACK_PIECE = 3
+    BLACK_KING = 4
+    TAKEN = 5
+    OUT_OF_BOUNDS = 6
 
     @property
     def is_white(self) -> bool:
         return (
             True
-            if self == BoardSquare.white_piece or self == BoardSquare.white_king
+            if self == BoardSquare.WHITE_PIECE or self == BoardSquare.WHITE_KING
             else False
         )
 
@@ -24,27 +24,27 @@ class BoardSquare(Enum):
     def is_black(self) -> bool:
         return (
             True
-            if self == BoardSquare.black_piece or self == BoardSquare.black_king
+            if self == BoardSquare.BLACK_PIECE or self == BoardSquare.BLACK_KING
             else False
         )
 
     @property
     def is_empty(self) -> bool:
-        return self == BoardSquare.empty
+        return self == BoardSquare.EMPTY
 
     @property
     def is_man(self) -> bool:
-        return self == BoardSquare.white_piece or self == BoardSquare.black_piece
+        return self == BoardSquare.WHITE_PIECE or self == BoardSquare.BLACK_PIECE
 
     @property
     def is_king(self) -> bool:
-        return self == BoardSquare.white_king or self == BoardSquare.black_king
+        return self == BoardSquare.WHITE_KING or self == BoardSquare.BLACK_KING
 
     @property
     def owner(self) -> Player:
         if self.is_white:
-            return Player.white
+            return Player.WHITE
         elif self.is_black:
-            return Player.black
+            return Player.BLACK
         else:
             raise ValueError("Invalid square")

@@ -5,7 +5,8 @@ from athena.pdn.fen import Fen
 
 
 class Damboard:
-    def __init__(self, size: BoardSize = BoardSize.standard):
+
+    def __init__(self, size: BoardSize = BoardSize.STANDARD):
         self.__top_promo_squares: set[int] = set()
         self.__bottom_promo_squares: set[int] = set()
         self.__board_map = BoardMap(size)
@@ -20,7 +21,7 @@ class Damboard:
     def __init_squares_map(self):
         pos = 0
         for ndx in range(self.__board_map.height * self.__board_map.width):
-            if self.__board_map[ndx] == BoardSquare.empty:
+            if self.__board_map[ndx] == BoardSquare.EMPTY:
                 self.__squares_map[pos] = ndx
                 pos += 1
 
@@ -46,11 +47,11 @@ class Damboard:
         self.__board_map.add_piece(piece, square)
 
     def remove_piece(self, square: int) -> None:
-        piece: BoardSquare = self.__board_map[square]
+        # piece: BoardSquare = self.__board_map[square]
         self.__board_map.remove_piece(square)
 
     def move_piece(self, from_square: int, to_square: int) -> None:
-        piece: BoardSquare = self.__board_map[from_square]
+        # piece: BoardSquare = self.__board_map[from_square]
         self.__board_map.move_piece(from_square, to_square)
 
     @property
