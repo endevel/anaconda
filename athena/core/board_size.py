@@ -2,12 +2,22 @@ from enum import Enum
 
 
 class BoardSize(Enum):  # noqa: F821
+    """
+    Enum representing different board sizes for the game.
+
+    Attributes:
+        STANDARD: Standard 8x8 board size.
+        BIG: Larger 10x10 board size.
+        LARGE: Largest 12x12 board size.
+    """
+
     STANDARD = 0
     BIG = 1
     LARGE = 2
 
     @property
     def height(self):
+        """Return the height of the board."""
         return (
             8
             if self == BoardSize.STANDARD
@@ -16,6 +26,7 @@ class BoardSize(Enum):  # noqa: F821
 
     @property
     def width(self):
+        """Return the width of the board."""
         return (
             8
             if self == BoardSize.STANDARD
@@ -24,6 +35,7 @@ class BoardSize(Enum):  # noqa: F821
 
     @property
     def start_position(self) -> str:
+        """Return the starting position notation for the board."""
         if self == BoardSize.STANDARD:
             return "B:W21,22,23,24,25,26,27,28,29,30,31,32:B1,2,3,4,5,6,7,8,9,10,11,12."
         elif self == BoardSize.BIG:

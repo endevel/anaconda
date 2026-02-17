@@ -58,21 +58,21 @@ class Damboard:
         self.__board_map.move_piece(from_square, to_square)
 
     @property
-    def height(self):
+    def height(self) -> int:
         return self.__board_map.height - 2
 
     @property
-    def width(self):
+    def width(self) -> int:
         return self.__board_map.width - 2
 
     @property
-    def top_promo_squares(self):
+    def top_promo_squares(self) -> set[int]:
         return self.__top_promo_squares
 
     @property
-    def bottom_promo_squares(self):
+    def bottom_promo_squares(self) -> set[int]:
         return self.__bottom_promo_squares
 
     @property
-    def max_move_length(self):
+    def max_move_length(self) -> int:
         return self.__board_map.height - 2

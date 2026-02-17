@@ -5,11 +5,12 @@ from athena.movegen.base.basemove import BaseMove
 
 
 class FindMoves:
+
     def __init__(
         self,
         board: Damboard,
         player: Player,
-        moves: tuple[BaseMove],
+        moves: tuple[BaseMove, ...],
         promo_squares: set[int],
     ):
         self.board = board
@@ -22,14 +23,14 @@ class FindMoves:
             return
         for mv in self.moves:
             for ndx in range(mv.length):
-                if self.board[square + ndx * mv.direction].is_empty:
+                if self.board[square + (ndx + 1) * mv.direction].is_empty:
                     piece_before = self.board[square]
-                    piece_after = self.board[square + ndx * mv.direction]
-                    if square + ndx * mv.direction in self.promo_squares:
+                    piece_after = self.board[square]
+                    if square + (ndx + 1) * mv.direction in self.promo_squares:
                         piece_after = piece_after.promote()
                     move = Move(
                         from_square=square,
-                        to_square=square + ndx * mv.direction,
+                        to_square=square + (ndx + 1) * mv.direction,
                         piece_before=piece_before,
                         piece_after=piece_after,
                         kill_pieces=list(),
