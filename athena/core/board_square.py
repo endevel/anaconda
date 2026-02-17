@@ -12,6 +12,14 @@ class BoardSquare(Enum):
     TAKEN = 5
     OUT_OF_BOUNDS = 6
 
+    def promote(self):
+        if self == BoardSquare.WHITE_PIECE:
+            return BoardSquare.WHITE_KING
+        elif self == BoardSquare.BLACK_PIECE:
+            return BoardSquare.BLACK_KING
+        else:
+            raise ValueError("Only man pieces can be promoted")
+
     @property
     def is_white(self) -> bool:
         return (

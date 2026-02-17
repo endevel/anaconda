@@ -6,4 +6,3 @@ class Rules(Enum):
     INTERNATIONAL = 1
     POOL = 2
     RUSSIAN = 3
-    

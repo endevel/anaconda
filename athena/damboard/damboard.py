@@ -18,6 +18,9 @@ class Damboard:
     def __getitem__(self, key: int) -> BoardSquare:
         return self.__board_map[key]
 
+    def __setitem__(self, key: int, value: BoardSquare) -> None:
+        self.__board_map[key] = value
+
     def __init_squares_map(self):
         pos = 0
         for ndx in range(self.__board_map.height * self.__board_map.width):
@@ -63,17 +66,13 @@ class Damboard:
         return self.__board_map.width - 2
 
     @property
-    def white_pos(self):
-        return self.__position.white_pos
-
-    @property
-    def black_pos(self):
-        return self.__position.black_pos
-
-    @property
     def top_promo_squares(self):
         return self.__top_promo_squares
 
     @property
     def bottom_promo_squares(self):
         return self.__bottom_promo_squares
+
+    @property
+    def max_move_length(self):
+        return self.__board_map.height - 2

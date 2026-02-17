@@ -34,6 +34,9 @@ class BoardMap:
     def __getitem__(self, key: int) -> BoardSquare:
         return self.__board_map[key]
 
+    def __setitem__(self, key: int, value: BoardSquare) -> None:
+        self.__board_map[key] = value
+
     def clear(self) -> None:
         self.__fill_board_map()
 
@@ -46,6 +49,7 @@ class BoardMap:
     def move_piece(self, from_square: int, to_square: int) -> None:
         self.__board_map[to_square] = self.__board_map[from_square]
         self.__board_map[from_square] = BoardSquare.EMPTY
+
     @property
     def height(self):
         return self.__height
