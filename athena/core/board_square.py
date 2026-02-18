@@ -103,3 +103,14 @@ class BoardSquare(Enum):
             return Player.BLACK
         else:
             raise ValueError("Invalid square")
+
+    def is_opponent(self, player: Player) -> bool:
+        """Check if the square contains an opponent piece.
+
+        Args:
+            player (Player): The player to check against.
+
+        Returns:
+            bool: True if the square contains an opponent piece, False otherwise.
+        """
+        return self.owner != player
