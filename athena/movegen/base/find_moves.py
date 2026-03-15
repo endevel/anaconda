@@ -1,7 +1,7 @@
 from athena.core.move import Move
 from athena.core.player import Player
 from athena.damboard.damboard import Damboard
-from athena.movegen.base.basemove import BaseMove
+from athena.movegen.base.base_move import BaseMove
 
 
 class FindMoves:
@@ -26,7 +26,10 @@ class FindMoves:
                 if self.board[square + (ndx + 1) * mv.direction].is_empty:
                     piece_before = self.board[square]
                     piece_after = self.board[square]
-                    if square + (ndx + 1) * mv.direction in self.promo_squares:
+                    if (
+                        square + (ndx + 1) * mv.direction in self.promo_squares
+                        and piece_after.is_man
+                    ):
                         piece_after = piece_after.promote()
                     move = Move(
                         from_square=square,

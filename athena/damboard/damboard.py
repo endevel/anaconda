@@ -21,6 +21,9 @@ class Damboard:
     def __setitem__(self, key: int, value: BoardSquare) -> None:
         self.__board_map[key] = value
 
+    def __iter__(self):
+        return iter(self.__squares_map)
+
     def __init_squares_map(self):
         pos = 0
         for ndx in range(self.__board_map.height * self.__board_map.width):

@@ -32,7 +32,7 @@ class BoardSquare(Enum):
         elif self == BoardSquare.BLACK_PIECE:
             return BoardSquare.BLACK_KING
         else:
-            raise ValueError("Only man pieces can be promoted")
+            return self
 
     @property
     def is_white(self) -> bool:
@@ -113,4 +113,11 @@ class BoardSquare(Enum):
         Returns:
             bool: True if the square contains an opponent piece, False otherwise.
         """
+        if (
+            self == BoardSquare.EMPTY
+            or self == BoardSquare.OUT_OF_BOUNDS
+            or self == BoardSquare.TAKEN
+        ):
+            return False
+
         return self.owner != player

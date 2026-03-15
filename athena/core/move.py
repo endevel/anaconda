@@ -1,3 +1,4 @@
+import copy
 from dataclasses import dataclass, field
 
 from athena.core.board_square import BoardSquare
@@ -20,13 +21,7 @@ class Move:
 
 
 def copy_move(move: Move) -> Move:
-    return Move(
-        from_square=move.from_square,
-        to_square=move.to_square,
-        piece_before=move.piece_before,
-        piece_after=move.piece_after,
-        kill_pieces=move.kill_pieces.copy(),
-    )
+    return copy.deepcopy(move)
 
 
 def do_move(board: Damboard, move: Move):

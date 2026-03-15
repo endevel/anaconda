@@ -9,4 +9,3 @@ def test_owner():
     assert bm.owner == Player.BLACK
     assert wm.is_opponent(Player.BLACK)
     assert bm.is_opponent(Player.WHITE)
-    

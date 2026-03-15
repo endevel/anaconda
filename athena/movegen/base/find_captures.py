@@ -1,6 +1,6 @@
 from athena.core.player import Player
 from athena.damboard.damboard import Damboard
-from athena.movegen.base.basemove import BaseMove
+from athena.movegen.base.base_move import BaseMove
 
 
 class FindCaptures:
