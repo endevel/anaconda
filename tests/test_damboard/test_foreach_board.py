@@ -7,4 +7,3 @@ def test_foreach_board():
     for square in board:
         ndx += 1
     assert ndx == 32
-    

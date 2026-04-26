@@ -20,11 +20,12 @@ class Fen:
 
         pieces: list[str] = fen.split(",")
         for piece_str in pieces:
+            loc_piece = piece
             if piece_str[0].upper() == "K":
-                piece = piece.promote()
+                loc_piece = loc_piece.promote()
                 piece_str = piece_str.replace(piece_str[0], "")
             square_ndx = int(piece_str)
-            self._pieces[square_ndx] = piece
+            self._pieces[square_ndx] = loc_piece
 
     def parse(self, position: str):
         items: list[str] = position.split(":")

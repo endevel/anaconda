@@ -7,6 +7,7 @@ from athena.pdn.fen import Fen
 class Damboard:
 
     def __init__(self, size: BoardSize = BoardSize.STANDARD):
+        self.__size = size
         self.__top_promo_squares: set[int] = set()
         self.__bottom_promo_squares: set[int] = set()
         self.__board_map = BoardMap(size)
@@ -59,6 +60,10 @@ class Damboard:
     def move_piece(self, from_square: int, to_square: int) -> None:
         # piece: BoardSquare = self.__board_map[from_square]
         self.__board_map.move_piece(from_square, to_square)
+
+    @property
+    def size(self) -> BoardSize:
+        return self.__size
 
     @property
     def height(self) -> int:

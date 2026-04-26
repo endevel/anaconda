@@ -94,15 +94,13 @@ class BoardSquare(Enum):
         Returns:
             Player: The player who owns the piece (Player.WHITE or Player.BLACK).
 
-        Raises:
-            ValueError: If the square does not contain a piece that can have an owner.
         """
         if self.is_white:
             return Player.WHITE
         elif self.is_black:
             return Player.BLACK
         else:
-            raise ValueError("Invalid square")
+            return Player.UNDEFINED
 
     def is_opponent(self, player: Player) -> bool:
         """Check if the square contains an opponent piece.

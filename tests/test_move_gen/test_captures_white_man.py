@@ -3,9 +3,10 @@ from athena.damboard.damboard import Damboard
 from athena.movegen.movegen import MoveGen
 
 
-def test_move_gen_white_man_move_01():
+def test_captures_white_man_01():
     board = Damboard()
-    movegen = MoveGen(Player.BLACK, board.size)
-    board.setup("W:W29,30,31,32:B1,2,3,4.")
+    board.setup("W:W25,29:B22,4.")
+    movegen = MoveGen(Player.WHITE, board.size)
     movegen.generate_all_moves(board)
-    assert len(movegen.move_list) == 7
+    assert len(movegen.move_list) == 1
+    

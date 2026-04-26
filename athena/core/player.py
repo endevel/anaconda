@@ -9,6 +9,7 @@ class Player(Enum):
 
     WHITE = 0
     BLACK = 1
+    UNDEFINED = 2
 
     @property
     def opponent(self):
